@@ -1,5 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_JqXQkNjaEeaxFIaP_IBZaQ" targetNamespace="http://tns.tibco.com/bw/composite/TestScenario1.module" name="TestScenario1.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:axis2="http://xsd.tns.tibco.com/bw/models/binding/soap/axis2" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:tempuri.org="http://tempuri.org/" xmi:id="_JqXQkNjaEeaxFIaP_IBZaQ" targetNamespace="http://tns.tibco.com/bw/composite/TestScenario1.module" name="TestScenario1.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_tgAIENjjEea5OfBpZVCecQ" name="addparam1param2" promote="ComponentProcess/addparam1param2">
+    <sca:interface.wsdl xmi:id="_tgIq8NjjEea5OfBpZVCecQ" interface="http://xmlns.example.com/20170112101656PLT#wsdl.interface(addparam1param2)" scaext:wsdlLocation="../Processes/testscenario1/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_tgaXwNjjEea5OfBpZVCecQ" name="RestService" path="/add?{param1}&amp;{param2}" docBasePath="http://localhost:7777/TestScenario1.module" docResourcePath="Add" basePath="/" connector="testscenario1.module.Add" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/testscenario1.module.Process-Add.json">
+      <operation xmi:id="_tgkIwNjjEea5OfBpZVCecQ" operationName="get" nickname="get-addparam1param2" httpMethod="GET" responseStyle="element">
+        <parameters xmi:id="_thUWsdjjEea5OfBpZVCecQ">
+          <parameterMapping xmi:id="_thVk0NjjEea5OfBpZVCecQ" parameterName="param1" parameterType="Query"/>
+          <parameterMapping xmi:id="_thVk0djjEea5OfBpZVCecQ" parameterName="param2" parameterType="Query"/>
+        </parameters>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_thUWsNjjEea5OfBpZVCecQ"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_tgsEkNjjEea5OfBpZVCecQ" bindingName="RestService"/>
+  </sca:service>
+  <sca:reference xmi:id="_GAAagNjhEea5OfBpZVCecQ" multiplicity="0..1" name="CalculatorSoap" wiredByImpl="false" promote="ComponentProcess/CalculatorSoap">
+    <sca:interface.wsdl xmi:id="_GAHvQNjhEea5OfBpZVCecQ" interface="http://tempuri.org/#wsdl.interface(CalculatorSoap)" scaext:wsdlLocation="../Service%20Descriptors/calculator.asmx.wsdl"/>
+    <scaext:binding xsi:type="axis2:SOAPReferenceBinding" xmi:id="_WeHLsNjhEea5OfBpZVCecQ" name="SOAPReferenceBinding" portTypeQName="tempuri.org:CalculatorSoap" transportBindingType="HTTP" modelVersion="1.2.0" portTypeWSDLLocation="platform:/resource/TestScenario1.module/Service%20Descriptors/calculator.asmx.wsdl" serviceQName="tempuri.org:Calculator" portName="CalculatorSoap" serviceBindingQName="tempuri.org:CalculatorSoap" locationURI="http://www.dneonline.com/calculator.asmx" wsdlLocation="platform:/resource/TestScenario1.module/Service%20Descriptors/calculator.asmx.wsdl">
+      <bindingType xmi:id="_XZX6ENjhEea5OfBpZVCecQ" style="DOCUMENT"/>
+      <operationConfiguration xmi:id="_XZkuYNjhEea5OfBpZVCecQ" operationName="Add" action="http://tempuri.org/Add">
+        <bindingType xmi:id="_XZkuYdjhEea5OfBpZVCecQ" style="DOCUMENT"/>
+        <messageConfiguration xmi:id="_XZkuYtjhEea5OfBpZVCecQ" messageQName="tempuri.org:AddSoapIn" wsdlLocation="platform:/resource/TestScenario1.module/Service%20Descriptors/calculator.asmx.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_XZkuY9jhEea5OfBpZVCecQ" partName="parameters" partElementName="tempuri.org:Add" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_XZkuZNjhEea5OfBpZVCecQ" messageQName="tempuri.org:AddSoapOut" messageDirection="OUTPUT" wsdlLocation="platform:/resource/TestScenario1.module/Service%20Descriptors/calculator.asmx.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_XZkuZdjhEea5OfBpZVCecQ" partName="parameters" partElementName="tempuri.org:AddResponse" encoding="literal"/>
+        </messageConfiguration>
+        <context xmi:id="_XZkuZtjhEea5OfBpZVCecQ">
+          <inputMapping xmi:id="_XZkuZ9jhEea5OfBpZVCecQ"/>
+          <outputMapping xmi:id="_XZkuaNjhEea5OfBpZVCecQ" direction="OUTPUT"/>
+        </context>
+      </operationConfiguration>
+      <operationConfiguration xmi:id="_XZkuadjhEea5OfBpZVCecQ" operationName="Subtract" action="http://tempuri.org/Subtract">
+        <bindingType xmi:id="_XZkuatjhEea5OfBpZVCecQ" style="DOCUMENT"/>
+        <messageConfiguration xmi:id="_XZkua9jhEea5OfBpZVCecQ" messageQName="tempuri.org:SubtractSoapIn" wsdlLocation="platform:/resource/TestScenario1.module/Service%20Descriptors/calculator.asmx.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_XZkubNjhEea5OfBpZVCecQ" partName="parameters" partElementName="tempuri.org:Subtract" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_XZkubdjhEea5OfBpZVCecQ" messageQName="tempuri.org:SubtractSoapOut" messageDirection="OUTPUT" wsdlLocation="platform:/resource/TestScenario1.module/Service%20Descriptors/calculator.asmx.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_XZkubtjhEea5OfBpZVCecQ" partName="parameters" partElementName="tempuri.org:SubtractResponse" encoding="literal"/>
+        </messageConfiguration>
+        <context xmi:id="_XZkub9jhEea5OfBpZVCecQ">
+          <inputMapping xmi:id="_XZkucNjhEea5OfBpZVCecQ"/>
+          <outputMapping xmi:id="_XZkucdjhEea5OfBpZVCecQ" direction="OUTPUT"/>
+        </context>
+      </operationConfiguration>
+      <operationConfiguration xmi:id="_XZkuctjhEea5OfBpZVCecQ" operationName="Multiply" action="http://tempuri.org/Multiply">
+        <bindingType xmi:id="_XZkuc9jhEea5OfBpZVCecQ" style="DOCUMENT"/>
+        <messageConfiguration xmi:id="_XZkudNjhEea5OfBpZVCecQ" messageQName="tempuri.org:MultiplySoapIn" wsdlLocation="platform:/resource/TestScenario1.module/Service%20Descriptors/calculator.asmx.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_XZkuddjhEea5OfBpZVCecQ" partName="parameters" partElementName="tempuri.org:Multiply" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_XZkudtjhEea5OfBpZVCecQ" messageQName="tempuri.org:MultiplySoapOut" messageDirection="OUTPUT" wsdlLocation="platform:/resource/TestScenario1.module/Service%20Descriptors/calculator.asmx.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_XZkud9jhEea5OfBpZVCecQ" partName="parameters" partElementName="tempuri.org:MultiplyResponse" encoding="literal"/>
+        </messageConfiguration>
+        <context xmi:id="_XZkueNjhEea5OfBpZVCecQ">
+          <inputMapping xmi:id="_XZkuedjhEea5OfBpZVCecQ"/>
+          <outputMapping xmi:id="_XZkuetjhEea5OfBpZVCecQ" direction="OUTPUT"/>
+        </context>
+      </operationConfiguration>
+      <operationConfiguration xmi:id="_XZkue9jhEea5OfBpZVCecQ" operationName="Divide" action="http://tempuri.org/Divide">
+        <bindingType xmi:id="_XZkufNjhEea5OfBpZVCecQ" style="DOCUMENT"/>
+        <messageConfiguration xmi:id="_XZkufdjhEea5OfBpZVCecQ" messageQName="tempuri.org:DivideSoapIn" wsdlLocation="platform:/resource/TestScenario1.module/Service%20Descriptors/calculator.asmx.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_XZkuftjhEea5OfBpZVCecQ" partName="parameters" partElementName="tempuri.org:Divide" encoding="literal"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_XZkuf9jhEea5OfBpZVCecQ" messageQName="tempuri.org:DivideSoapOut" messageDirection="OUTPUT" wsdlLocation="platform:/resource/TestScenario1.module/Service%20Descriptors/calculator.asmx.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_XZkugNjhEea5OfBpZVCecQ" partName="parameters" partElementName="tempuri.org:DivideResponse" encoding="literal"/>
+        </messageConfiguration>
+        <context xmi:id="_XZkugdjhEea5OfBpZVCecQ">
+          <inputMapping xmi:id="_XZkugtjhEea5OfBpZVCecQ"/>
+          <outputMapping xmi:id="_XZkug9jhEea5OfBpZVCecQ" direction="OUTPUT"/>
+        </context>
+      </operationConfiguration>
+      <outboundConfiguration xsi:type="axis2:HttpTransportConfiguration" xmi:id="_XZ0mANjhEea5OfBpZVCecQ" httpClient="testscenario1.module.HttpClientResource"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_XZ2bMNjhEea5OfBpZVCecQ" bindingName="SOAPReferenceBinding"/>
+  </sca:reference>
   <sca:property xmi:id="_KhEPENjaEeaxFIaP_IBZaQ" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_KhcCgNjaEeaxFIaP_IBZaQ" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_KhlzgNjaEeaxFIaP_IBZaQ" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
@@ -9,5 +84,11 @@
   <sca:property xmi:id="_Kh7xwNjaEeaxFIaP_IBZaQ" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
   <sca:component xmi:id="_KHlYENjaEeaxFIaP_IBZaQ" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_KHmmMNjaEeaxFIaP_IBZaQ" processName="testscenario1.module.Process"/>
+    <sca:service xmi:id="_tf-58NjjEea5OfBpZVCecQ" name="addparam1param2">
+      <sca:interface.wsdl xmi:id="_tf-58djjEea5OfBpZVCecQ" interface="http://xmlns.example.com/20170112101656PLT#wsdl.interface(addparam1param2)" scaext:wsdlLocation="../Processes/testscenario1/module/Process.bwp"/>
+    </sca:service>
+    <sca:reference xmi:id="_F_6T4NjhEea5OfBpZVCecQ" name="CalculatorSoap">
+      <sca:interface.wsdl xmi:id="_F_8JENjhEea5OfBpZVCecQ" interface="http://tempuri.org/#wsdl.interface(CalculatorSoap)" scaext:wsdlLocation="../Service%20Descriptors/calculator.asmx.wsdl"/>
+    </sca:reference>
   </sca:component>
 </sca:composite>
